@@ -1,35 +1,40 @@
-from initial_data import get_books
+from DATA.initial_data import get_books
+from menu import show_menu, get_action, show_continue_msg
+from library import display_books, add_new_book_by_inputs, borrow_available_book, return_unavailable_book, \
+      display_available_books, display_book_by_name, display_books_by_author
 
+def exit_program():
+    print("Bye!")
+    exit(0)
 
-def display_books(books):
-    for b in books:
-        print(b["name"])
-
-
-def search_book(books, name):
-    for b in books:
-        if b["name"] == name:
-            return b
-    return None
-
-def add_book(books, name, author, year):
-    new_book = {
-        "name": name,
-        "author": author,
-        "year": year,
-        "available":True
-    }
-    books.append(new_book)
-
-    return new_book in books
-
-# def borrow_book(books, book_id):
-#     book = 
+ACTIONS = {
+    1: display_books,
+    2: display_book_by_name,
+    3: add_new_book_by_inputs,
+    4: borrow_available_book,
+    5: return_unavailable_book,
+    6: display_available_books,
+    7: display_books_by_author
+}
 
 def main():
     books = get_books()
 
-    display_books(books)
+    while True:
+        try:
+            show_menu()
+            action = get_action()
+
+            if action == 8:
+                print("Bye!")
+                exit(0)
+            
+            ACTIONS[action](books)
+
+            show_continue_msg()
+
+        except ValueError as e:
+            print(e)
 
 
 if __name__ == "__main__":
