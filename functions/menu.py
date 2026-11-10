@@ -1,4 +1,4 @@
-from utils import clear_screen
+from .utils import clear_screen
 
 def show_menu():
     clear_screen()
@@ -23,7 +23,6 @@ def get_action():
     action = int(input())
     clear_screen()
     return action
-
 
 def show_continue_msg():
     input("\n\nPress Enter to continue... ")

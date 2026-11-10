@@ -1,7 +1,9 @@
 from DATA.initial_data import get_books
-from menu import show_menu, get_action, show_continue_msg
-from library import display_books, add_new_book_by_inputs, borrow_available_book, return_unavailable_book, \
-      display_available_books, display_book_by_name, display_books_by_author
+from functions.menu import show_menu, get_action, show_continue_msg
+from functions.display_by_inputs import display_books, display_book_by_name, display_books_by_author
+from functions.adding_book import add_new_book_by_inputs
+from functions.borrow_and_return import borrow_available_book, return_unavailable_book
+from functions.avilable_books import display_available_books
 
 def exit_program():
     print("Bye!")
