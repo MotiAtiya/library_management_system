@@ -1,5 +1,6 @@
 from .user_inputs import input_until_valid, input_book_id
 from .get_by_inputs import get_book_by_id
+from .printer import print_title
 
 def borrow_book(books, book_id):
     book = get_book_by_id(books, book_id)
@@ -11,6 +12,7 @@ def borrow_book(books, book_id):
     return True
 
 def borrow_available_book(books):
+    print_title("Borrowing a Book")
     book_id = input_until_valid(input_book_id)
     if borrow_book(books, book_id):
         print("The book has been successfully")
@@ -22,10 +24,12 @@ def return_book(books, book_id):
 
     if not book or book["available"] == True:
         return False
+    
     book["available"] = True
     return True
 
 def return_unavailable_book(books):
+    print_title("Returning a Book")
     book_id = input_until_valid(input_book_id)
     if return_book(books, book_id):
         print("The book was successfully returned to the library")

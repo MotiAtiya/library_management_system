@@ -1,4 +1,5 @@
 from .utils import clear_screen
+from .user_inputs import input_until_valid, input_action_number
 
 def show_menu():
     clear_screen()
@@ -7,6 +8,7 @@ def show_menu():
        LIBRARY MANAGEMENT
 ================================
 
+0. Exit
 1. Display all books
 2. Search book by name
 3. Add new book
@@ -14,13 +16,12 @@ def show_menu():
 5. Return a book
 6. Display available books
 7. Display books by author
-8. Exit
 
 Choose an option:
     """)
 
-def get_action():
-    action = int(input())
+def get_action(num_of_options):
+    action = input_until_valid(lambda: input_action_number(num_of_options))
     clear_screen()
     return action
 

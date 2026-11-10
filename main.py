@@ -25,9 +25,9 @@ def main():
     while True:
         try:
             show_menu()
-            action = get_action()
+            action = get_action(len(ACTIONS))
 
-            if action == 8:
+            if action == 0:
                 print("Bye!")
                 exit(0)
             
